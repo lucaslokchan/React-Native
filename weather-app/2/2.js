@@ -1,13 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import { Platform, StyleSheet, Text, KeyboardAvoidingView, TextInput} from 'react-native';
 
 export default class App extends React.Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.red}>Hello</Text>
-                <Text style={styles.blue}>123123123</Text>
-            </View>
+            <KeyboardAvoidingView style={styles.container} behavior='padding'>
+                <Text style={[styles.largeText, styles.textStyle]}>Hong Kong</Text>
+                <Text style={[styles.smallText, styles.textStyle]}>Sunny</Text>
+                <Text style={[styles.largeText, styles.textStyle]}>28°</Text>
+
+                <TextInput
+                  autoCorrect={false}
+                  placeholder='Search any city'
+                  placeholderTextColor='white'
+                  style={styles.textInput}
+                  clearButtonMode='always'
+                />
+            </KeyboardAvoidingView>
         );
     }
 }
@@ -19,13 +28,32 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
-    red: {
-      color: 'red',
+    textStyle: {
+      textAlign: 'center',
+      ...Platform.select({
+        ios: {
+          fontFamily: 'AvenirNext-Regular'
+        },
+        android: {
+          fontFamily: 'Roboto'
+        },
+      }),
     },
-    
-    blue: {
-      color: 'blue'
-    }
+    largeText: {
+      fontSize: 44,
+    },
+    smallText: {
+      fontSize: 18,
+    },
+    textInput:{
+      backgroundColor: '#666',
+      color: 'white',
+      height: 40,
+      width: 300,
+      marginTop: 20,
+      marginHorizontal: 20,
+      paddingHorizontal: 10,
+      alignSelf: 'center',
+    },
 });
 

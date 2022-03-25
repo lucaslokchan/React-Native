@@ -1,33 +1,24 @@
 import React from 'react';
-import { Platform, StyleSheet, Text, KeyboardAvoidingView, ImageBackground, View, ActivityIndicator, StatusBar, } from 'react-native';
+import { Platform, StyleSheet, Text, KeyboardAvoidingView, ImageBackground, View, } from 'react-native';
 
 import SearchInput from './components/SearchInput';
 
 import getImageForWeather from './utils/getImageForWeather';
-import { fetchLocationId, fetchWeather } from './utils/api';
 
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
-      error: false,
-      location: '',
-      temperature: 0,
-      weather: '',
+      location: 'Hong Kong',
     };
   }
 
-  handleUpdateLocation = async city => {
-    if (!city) return;
-
-    this.setState({ loading: true}, async () => {
-      try {
-
-      }
+  handleUpdateLocation = city => {
+    this.setState({
+      location: city,
     });
-  }
+  };
 
     render() {
       const { location } = this.state;
@@ -42,7 +33,7 @@ export default class App extends React.Component {
 
                 <View style={styles.detailsContainer}>
                   <Text style={[styles.largeText, styles.textStyle]}>{location}</Text>
-                  <Text style={[styles.smallText, styles.textStyle]}>Hong Kong</Text>
+                  <Text style={[styles.smallText, styles.textStyle]}>Overcast</Text>
                   <Text style={[styles.largeText, styles.textStyle]}>18°</Text>
 
                   <SearchInput 
