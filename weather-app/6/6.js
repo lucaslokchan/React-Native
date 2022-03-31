@@ -29,7 +29,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.handleUpdateLocation('Hong Kong');
+    this.handleUpdateLocation('San Francisco');
   }
 
   handleUpdateLocation = async city => {
